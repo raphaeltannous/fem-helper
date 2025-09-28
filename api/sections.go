@@ -7,7 +7,7 @@ import (
 	"unicode"
 )
 
-type sections []SectionData
+type Sections []SectionData
 
 func newSection(title, duration string, lessonsIndexes []int) SectionData {
 	return SectionData{
@@ -99,8 +99,8 @@ type rawSectionsJSON struct {
 	RawJSON []json.RawMessage `json:"lessonElements"`
 }
 
-func (r *rawSectionsJSON) toLessonElements() sections {
-	var secs sections
+func (r *rawSectionsJSON) toLessonElements() Sections {
+	var secs Sections
 	var currentSection *SectionData
 
 	for _, jsonElement := range r.RawJSON {

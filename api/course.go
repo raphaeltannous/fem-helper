@@ -25,7 +25,7 @@ type CourseData struct {
 	Description   string `json:"description"`
 	LessonsHash   []string
 
-	Sections sections
+	Sections Sections
 
 	Lessons lessons `json:"lessonData"`
 }

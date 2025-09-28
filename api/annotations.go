@@ -2,15 +2,15 @@ package api
 
 import "fmt"
 
-type annotations []annotationData
+type Annotations []AnnotationData
 
-type annotationData struct {
+type AnnotationData struct {
 	Range   []int  `json:"range"`
 	Message string `json:"message"`
 }
 
 // Return annotation.Range as readable format MM:SS
-func (annotation annotationData) GetReadableRange() []string {
+func (annotation AnnotationData) GetReadableRange() []string {
 	readableRange := make([]string, len(annotation.Range))
 
 	for i, annotationTime := range annotation.Range {

@@ -40,7 +40,7 @@ func TestAnnotationData_GetReadableRange(t *testing.T) {
 	for _, c := range annotationTests {
 		testName := fmt.Sprintf("%v", c.Range)
 		t.Run(testName, func(t *testing.T) {
-			answer := annotationData{
+			answer := AnnotationData{
 				Range: c.Range,
 			}.GetReadableRange()
 
