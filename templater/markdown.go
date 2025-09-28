@@ -112,7 +112,7 @@ func (markdown MarkdownTemplater) GenerateCourseFromTemplate() error {
 func (markdown MarkdownTemplater) GenerateLessonFromTemplate(outputDirectory outputdir.OutputDirectory, lesson api.LessonData) error {
 	outputFile := filepath.Join(
 		outputDirectory.String(),
-		fmt.Sprintf("%02d-%s.md", lesson.Index, lesson.Slug),
+		fmt.Sprintf("%d-%s.md", lesson.Index, lesson.Slug),
 	)
 
 	file, err := os.Create(outputFile)
@@ -142,7 +142,7 @@ func formatCourseDataToMarkdown(course api.CourseData) string {
 			lesson := course.Lessons[lessonHash]
 
 			result.WriteString(
-				fmt.Sprintf("  - [[%d-%s/%s.md|%d. %s]]\n", x, sectionSlug, lesson.Slug, lessonIndex, lesson.Title),
+				fmt.Sprintf("  - [[%d-%s/%d-%s.md|%d. %s]]\n", x, sectionSlug, lessonIndex, lesson.Slug, lessonIndex, lesson.Title),
 			)
 		}
 	}
