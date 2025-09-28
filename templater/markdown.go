@@ -1,15 +1,19 @@
 package templater
 
 import (
+	"embed"
 	"fmt"
-	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
+	"text/template"
 
 	"github.com/raphaeltannous/fem-helper/api"
 	"github.com/raphaeltannous/fem-helper/outputdir"
 )
+
+//go:embed templates
+var templatesFolder embed.FS
 
 type MarkdownTemplater struct {
 	course struct {
@@ -44,7 +48,8 @@ func NewMarkdownTemplater(course api.CourseData, outputDirector outputdir.Output
 			filepath.Base(courseTemplate),
 		).Funcs(
 			markdownTemplateFunctions,
-		).ParseFiles(
+		).ParseFS(
+			templatesFolder,
 			courseTemplate,
 		),
 	)
@@ -54,7 +59,8 @@ func NewMarkdownTemplater(course api.CourseData, outputDirector outputdir.Output
 			filepath.Base(lessonTemplate),
 		).Funcs(
 			markdownTemplateFunctions,
-		).ParseFiles(
+		).ParseFS(
+			templatesFolder,
 			lessonTemplate,
 		),
 	)

@@ -1,0 +1,11 @@
+---
+aliases:
+  - "{{ .Title }}"
+tags:
+  - frontend-masters/{{ .Slug }}
+{{- .Tags | formattags -}}
+---
+
+# {{ .Title }}
+
+{{ .CourseData | formatcoursedata }}
